@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Login</h2>
+<input id="email"><br>
+<input id="password" type="password"><br>
+<button onclick="login()">Login</button>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+<script src="../config/config.js"></script>
+<script src="js/firebase.js"></script>
+
+<script>
+async function login(){
+  await auth.signInWithEmailAndPassword(email.value,password.value);
+  location.href="app.html";
+}
+</script>
+</body>
+</html>
