@@ -1,16 +1,15 @@
-
 const CONFIG = {
   env: location.hostname === "localhost" ? "local" : "prod",
   firebase: {
     local: {
-      apiKey: "LOCAL_API_KEY",
-      authDomain: "LOCAL_PROJECT.firebaseapp.com",
-      projectId: "LOCAL_PROJECT_ID"
+      apiKey: "AIzaSyBefhIgsOJ29u0LC1zGNnZN_QIDi__p8Oc",
+      authDomain: "hr-saas-ai-app.firebaseapp.com",
+      projectId: "hr-saas-ai-app"
     },
     prod: {
-      apiKey: "PROD_API_KEY",
-      authDomain: "PROD_PROJECT.firebaseapp.com",
-      projectId: "PROD_PROJECT_ID"
+      apiKey: "AIzaSyBefhIgsOJ29u0LC1zGNnZN_QIDi__p8Oc",
+      authDomain: "hr-saas-ai-app.firebaseapp.com",
+      projectId: "hr-saas-ai-app"
     }
   }
 };

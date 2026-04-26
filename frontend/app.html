@@ -1,29 +1,68 @@
-
 <!DOCTYPE html>
 <html>
+<head>
+  <title>HR SaaS Dashboard</title>
+  <style>
+    * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    body { margin: 0; padding: 20px; background: #f5f5f5; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+    .header h2 { margin: 0; color: #333; }
+    .user-info { text-align: right; font-size: 14px; color: #666; }
+    .card { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .card h3 { margin-top: 0; color: #333; }
+    input, select { padding: 10px; margin: 5px 0; width: 100%; max-width: 300px; border: 1px solid #ddd; border-radius: 4px; }
+    button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    button.logout { background: #dc3545; }
+    button.logout:hover { background: #c82333; }
+    .stat-card { background: #f8f9fa; padding: 15px; border-radius: 4px; margin-bottom: 10px; }
+    .stat-card h4 { margin: 0 0 10px 0; color: #333; }
+    .stat-card p { margin: 5px 0; color: #666; }
+    #loading { text-align: center; padding: 40px; display: none; }
+    #error { background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 20px; display: none; }
+  </style>
+</head>
 <body>
+  <div class="container">
+    <div id="loading">Loading...</div>
+    <div id="error"></div>
+    
+    <div id="app" style="display: none;">
+      <div class="header">
+        <h2>HR SaaS Dashboard</h2>
+        <div class="user-info">
+          <div id="userEmail"></div>
+          <div>Role: <span id="userRole"></span></div>
+          <button class="logout" onclick="logout()">Logout</button>
+        </div>
+      </div>
 
-<h2>HR SaaS Dashboard</h2>
-<button onclick="logout()">Logout</button>
+      <div class="card">
+        <h3>Add Entry</h3>
+        <input id="client" placeholder="Client Name">
+        <input id="role" placeholder="Role/Position">
+        <select id="status">
+          <option value="In Progress">In Progress</option>
+          <option value="Selected">Selected</option>
+          <option value="Joined">Joined</option>
+        </select>
+        <button onclick="addEntry()">Add Entry</button>
+      </div>
 
-<input id="client">
-<input id="role">
-<select id="status">
-<option>In Progress</option>
-<option>Selected</option>
-<option>Joined</option>
-</select>
-<button onclick="addEntry()">Add</button>
+      <div class="card">
+        <h3>Analytics</h3>
+        <div id="stats"></div>
+      </div>
+    </div>
+  </div>
 
-<div id="stats"></div>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
-<script src="../config/config.js"></script>
-<script src="js/firebase.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/app.js"></script>
-
+  <script src="../config/config.js"></script>
+  <script src="js/firebase.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
